@@ -39,7 +39,33 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .padding(innerPadding)
                     ) {
-                        bankDisplay("토스은행", 10000510)
+                        Column {
+                            var listBankData: List<BankData>
+
+                            listBankData = listOf(
+                                BankData().apply {
+                                    setbankName("토스")
+                                    setAccountBalance(10000)
+                                },
+                                BankData().apply {
+                                    setbankName("국민")
+                                    setAccountBalance(30000)
+                                },
+                                BankData().apply {
+                                    setbankName("하나")
+                                    setAccountBalance(100000)
+                                }
+
+                            )
+
+
+                            listBankData.forEach { listBankData ->
+                                bankDisplay(
+                                    listBankData.getBankName(),
+                                    listBankData.getAccountBalance()
+                                )
+                            }
+                        }
                     }
                 }
 
@@ -49,13 +75,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun bankDisplay(bankName: String, money: Long) {
+fun bankDisplay(bankName: String, money: String) {
     Row {
         bankIcon(icon = bankName)
 
         Column {
             accountName(bankName = bankName + "통장")
-            accountBalance(accountBalance = money)
+            accountBalance(accountBalance = money.toLong())
         }
 
         sendMoney()
