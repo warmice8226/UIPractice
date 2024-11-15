@@ -7,6 +7,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.border
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -44,6 +46,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -95,7 +98,13 @@ class MainActivity : ComponentActivity(), View.OnClickListener {
                         BottomAppBar(
                             containerColor = Color.LightGray
                         ) {
-                            Row {
+                            Row(
+                                modifier = Modifier
+                                    .padding(10.dp),
+                                horizontalArrangement = Arrangement.SpaceAround,
+                                verticalAlignment = Alignment.CenterVertically
+
+                            ) {
                                 creatRandomBankButton(bankViewModel)
                                 creatWriteBankButton(bankViewModel)
                                 removeRandomBankButton(
@@ -237,8 +246,8 @@ fun sendMoney(onClick: () -> Unit) {
 @Composable
 fun creatRandomBankButton(viewModel: BankViewModel) {
     Button(
-        onClick = { viewModel.setRandomBank() }, modifier = Modifier
-            .fillMaxWidth(0.25f)
+        onClick = { viewModel.setRandomBank() },
+        modifier = Modifier
             .fillMaxHeight()
     ) {
         Text(
@@ -260,7 +269,6 @@ fun creatWriteBankButton(viewModel: BankViewModel) {
     FilledTonalButton(
         onClick = { showFirstDialog = true },
         modifier = Modifier
-            .fillMaxWidth(0.33f)
             .fillMaxHeight()
     ) {
         Text(
@@ -389,7 +397,6 @@ fun removeRandomBankButton(
 
         },
         modifier = Modifier
-            .fillMaxWidth(0.5f)
             .fillMaxHeight()
     ) {
         Text(
@@ -424,7 +431,6 @@ fun removeSelectBankButton(
             }
         },
         modifier = Modifier
-            .fillMaxWidth()
             .fillMaxHeight()
     ) {
         Text(
