@@ -51,6 +51,16 @@ android {
 
 dependencies {
 
+    val lifecycle_version = "2.8.7"
+//    val arch_version = "2.2.0"
+
+    //viewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // ViewModel utilities for Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
+    // Saved state module for ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

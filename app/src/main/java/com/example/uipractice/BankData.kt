@@ -1,8 +1,8 @@
 package com.example.uipractice
 
-import kotlin.reflect.KMutableProperty0
+import androidx.lifecycle.ViewModel
 
-class BankData {
+class BankData() : ViewModel() {
     private var bankName = "공백"
     private var accountBalance = 0
 
