@@ -23,6 +23,4 @@ enum class BankName(val bankName: String) {
     Kiwoom("키움증권")
 }
 
-fun getRandomBankName(): String {
-    return BankName.values().random().bankName
-}
+
